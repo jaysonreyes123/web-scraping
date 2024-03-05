@@ -27,14 +27,12 @@ const {url} = request.query;
     var page_number = 1;
     var next_btn = "cm_cr_arp_d_paging_btm_next_";
     var has_next = true;
-    async function Detail(){
-
+    
+    (async()=>{
         const browser   = await playwright.chromium.launch({headless:true})
         const context   = await browser.newContext();
         const page      = await context.newPage({bypassCSP:true})
-
         
-
         while(has_next){
             const _url  = URL+url+"/ref="+next_btn+page_number+"?ie=UTF8&reviewerType=all_reviews&pageNumber="+page_number;
 
@@ -125,10 +123,7 @@ const {url} = request.query;
         data.review = review;
         response.json({data:data})
         await browser.close();
-    }
-
-    Detail();
-
+     })
 })
 
 app.listen(PORT,()=>{
