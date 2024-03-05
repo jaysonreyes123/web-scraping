@@ -24,8 +24,7 @@ app.get("/productDetail",(request,response)=>{
     const review = [];
     const {url} = request.query;
     const browser   =  playwright.chromium.launch({headless:true})
-    const context   =  browser.newContext();
-
+    const page      =  browser.newPage()
     response.send("testing")
 
 })
