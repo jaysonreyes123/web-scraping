@@ -22,7 +22,21 @@ app.get("/",(request,response)=>{
 app.use(cors())
 app.get("/productDetail",(request,response)=>{
     const review = [];
-   response.send("working")
+    const {url} = request.query;
+    
+    var page_number = 1;
+    var next_btn = "cm_cr_arp_d_paging_btm_next_";
+    var has_next = true;
+    async function Detail(){
+
+        const browser   = await playwright.chromium.launch({headless:true})
+        const context   = await browser.newContext();
+        const page      = await context.newPage({bypassCSP:true})
+        
+        await browser.close();
+    }
+
+    Detail();
 })
 
 app.listen(PORT,()=>{
