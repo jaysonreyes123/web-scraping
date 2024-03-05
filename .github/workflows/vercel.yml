@@ -1,11 +1,11 @@
-name: Vercel Deployment
+name: Vercel Preview Deployment
 
 on:
   push:
     branches: -main
 
 jobs:
-  Deployment-Production:
+  Deploy-Production:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
