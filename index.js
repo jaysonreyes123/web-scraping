@@ -24,9 +24,14 @@ app.get("/productDetail",(request,response)=>{
     const review = [];
     const {url} = request.query;
     (async()=>{
-        const browser   =  playwright.chromium.launch({headless:true})
-        const context   =  browser.newContext();
-        const page      =  context.newPage()
+        const browser   =  await playwright.chromium.launch({headless:true})
+        const context   =  await browser.newContext();
+        const page      =  await context.newPage()
+
+        const url = "https://www.amazon.com/dp/B0BP9SNVH9/";
+
+        
+
     })
     
     response.send("testing")
