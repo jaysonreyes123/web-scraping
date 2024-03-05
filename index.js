@@ -29,10 +29,10 @@ const {url} = request.query;
     var has_next = true;
     
     (async()=>{
-        const browser   = await playwright.chromium.launch({headless:true})
+        const browser   = await playwright.chromium.launch({headless:true,timeout:0})
         const context   = await browser.newContext();
         const page      = await context.newPage({bypassCSP:true})
-        
+
         while(has_next){
             const _url  = URL+url+"/ref="+next_btn+page_number+"?ie=UTF8&reviewerType=all_reviews&pageNumber="+page_number;
 
