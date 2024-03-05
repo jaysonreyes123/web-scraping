@@ -16,7 +16,7 @@ const data = {
 }
 
 app.get("/",(request,response)=>{
-    response.send("express is working!!")
+    response.send("express is workings!!")
 })
 
 app.use(cors())
