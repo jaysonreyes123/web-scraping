@@ -21,6 +21,7 @@ app.get("/",(request,response)=>{
 
 app.use(cors())
 app.get("/productDetail",(request,response)=>{
+    let title = "";
     const review = [];
     const {url} = request.query;
     (async()=>{
