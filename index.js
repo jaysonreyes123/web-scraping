@@ -25,7 +25,7 @@ app.get("/productDetail",(request,response)=>{
     const {url} = request.query;
     const browser   =  playwright.chromium.launch({headless:true})
     const context   =  browser.newContext();
-    const page      =  context.newPage({bypassCSP:true})
+    const page      =  context.newPage()
     response.send("testing")
 
 })
