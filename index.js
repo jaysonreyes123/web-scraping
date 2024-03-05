@@ -30,10 +30,10 @@ app.get("/productDetail",(request,response)=>{
     var has_next = true;
     async function Detail(){
 
-        const browser = await chromium.launch({
-                headless: false,
-                executablePath: awsChromium.executablePath,
-        });
+        const browser = await playwright.chromium.launch({
+        headless: false,
+        executablePath: awsChromium.executablePath,
+    });
         const context   = await browser.newContext();
         const page      = await context.newPage({bypassCSP:true})
 
