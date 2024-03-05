@@ -2,6 +2,7 @@
 import express from 'express';
 import playwright from 'playwright-core';
 import cors from 'cors';
+import awsChromium  from 'chrome-aws-lambda';
 const app = express();
 const PORT = 8082;
 const URL = "https://www.amazon.com/";
@@ -29,10 +30,13 @@ app.get("/productDetail",(request,response)=>{
     var has_next = true;
     async function Detail(){
 
-        const browser   = await playwright.chromium.launch({headless:true})
+        const browser = await chromium.launch({
+                headless: false,
+                executablePath: awsChromium.executablePath,
+        });
         const context   = await browser.newContext();
         const page      = await context.newPage({bypassCSP:true})
-        
+
         await browser.close();
     }
 
