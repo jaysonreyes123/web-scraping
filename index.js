@@ -1,6 +1,6 @@
 
 import express from 'express';
-import playwright from 'playwright-core';
+import {Browser, chromium} from 'playwright-core'
 import cors from 'cors';
 import awsChromium  from 'chrome-aws-lambda';
 const app = express();
@@ -38,7 +38,7 @@ app.get("/productDetail",(request,response)=>{
             "--no-zygote"]
         }
 
-        const browser = await playwright.chromium.launch(launchOptions);
+        const browser  =  await chromium.launch(launchOptions)
         const context   = await browser.newContext();
         const page      = await context.newPage({bypassCSP:true})
 
