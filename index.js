@@ -27,8 +27,7 @@ const {url} = request.query;
     var page_number = 1;
     var next_btn = "cm_cr_arp_d_paging_btm_next_";
     var has_next = true;
-    
-    (async()=>{
+    async function Detail(){
 
         const browser   = await playwright.chromium.launch({headless:true})
         const context   = await browser.newContext();
@@ -126,7 +125,9 @@ const {url} = request.query;
         data.review = review;
         response.json({data:data})
         await browser.close();
-    })
+    }
+
+    Detail();
 
 })
 
