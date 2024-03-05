@@ -33,11 +33,12 @@ app.get("/productDetail",(request,response)=>{
         const context   = await browser.newContext();
         const page      = await context.newPage({bypassCSP:true})
 
-        page.setDefaultNavigationTimeout(0);
+        
 
         while(has_next){
             const _url  = URL+url+"/ref="+next_btn+page_number+"?ie=UTF8&reviewerType=all_reviews&pageNumber="+page_number;
-            await page.goto(_url);
+
+            await page.goto(_url,{timeout:0});
             let title;
             let _image;
             let star_rating
@@ -84,7 +85,7 @@ app.get("/productDetail",(request,response)=>{
                 const date_review       = item.querySelector("span[data-hook='review-date']") ?? "";
                 const rating            = item.querySelector(".review-rating");
                 const badge             = item.querySelector("span[data-hook='avp-badge']") ?? "";
-                const username          = item.querySelector("a.a-profile").getAttribute("href");
+                const username          = item.querySelector("a.a-profile") ? item.querySelector("a.a-profile").getAttribute("href") :  "" ;
 
                 //convert to text
                 const Text              = (value) => value.innerText;
