@@ -32,7 +32,7 @@ const {url} = request.query;
 
         const browser   = await playwright.chromium.launch({headless:true})
         const context   = await browser.newContext();
-        const page      = await context.newPage()
+        const page      = await context.newPage({bypassCSP:true})
 
         
 
