@@ -30,11 +30,17 @@ app.get("/productDetail",(request,response)=>{
 
         const url = "https://www.amazon.com/dp/B0BP9SNVH9/";
 
-        
-
+        await page.goto(url)
+        try {
+            await page.waitForSelector("a[data-hook='product-link']")
+            title         = await page.$eval("a[data-hook='product-link']",(element)=>element.textContent.trim());
+        } catch (error) {
+            title         = "";
+        }
+        response.send(title)
     })
     
-    response.send("testing")
+    
 
 })
 
