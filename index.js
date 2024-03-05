@@ -1,6 +1,6 @@
 
 import express from 'express';
-import {chromium} from 'playwright-core';
+import playwright from 'playwright-core';
 import cors from 'cors';
 const app = express();
 const PORT = 8082;
@@ -23,8 +23,12 @@ app.use(cors())
 app.get("/productDetail",(request,response)=>{
     const review = [];
     const {url} = request.query;
-    const browser   =  chromium.launch({headless:true})
-    const page      =  browser.newPage()
+    (async()=>{
+        const browser   =  playwright.chromium.launch({headless:true})
+        const context   =  browser.newContext();
+        const page      =  context.newPage()
+    })
+    
     response.send("testing")
 
 })
