@@ -1,6 +1,6 @@
 
 import express from 'express';
-import chromium from 'playwright-core'
+import {chromium} from 'playwright-core'
 import cors from 'cors';
 import awsChromium  from 'chrome-aws-lambda';
 const app = express();
