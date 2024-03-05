@@ -38,6 +38,8 @@ app.get("/productDetail",(request,response)=>{
             title         = "";
         }
         response.send(title)
+        await browser.close();
+        
     })
     
     
